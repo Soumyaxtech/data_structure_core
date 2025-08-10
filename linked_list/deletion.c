@@ -27,6 +27,21 @@ void delete_from_first(struct node **start){
     
 }
 
+void delete_from_end(struct node **start){
+    struct node *ptr;
+    ptr=*start;
+    if(*start==NULL || ptr->next ==NULL){
+        delete_from_first(start);
+    }
+    else{
+        while(ptr->next->next!=NULL){
+            ptr=ptr->next;
+        }
+        free(ptr->next);
+        ptr->next=NULL;
+    }
+}
+
 void traversal(struct node **start){
     struct node *ptr;
     ptr=*start;
@@ -43,7 +58,9 @@ int main(){
     insert_at_begining(&start,10);
     insert_at_begining(&start,20);
     insert_at_begining(&start,30);
+    insert_at_begining(&start,40);
     delete_from_first(&start);
+    delete_from_end(&start);
 
     traversal(&start);
 }
