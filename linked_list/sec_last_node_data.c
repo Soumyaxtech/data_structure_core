@@ -39,6 +39,32 @@ void printing_data_last(struct node **start){
     }
 }
 
+void middle_node_data(struct node **start){
+    struct node *ptr;
+    ptr=*start;
+    int count=1;
+    while(ptr->next!=NULL){
+        ptr=ptr->next;
+        count ++;
+    }
+    //printf("%d",count);
+    ptr=*start;
+    if(count%2==0){
+        for(int i=1;i<count/2;i++){
+            ptr=ptr->next;
+        }
+        printf("the data in the middle node is ");
+            printf("%d \n",ptr->data);
+    }
+    else{
+        for(int i=1;i<(count/2)+1;i++){
+            ptr=ptr->next;
+        }
+        printf("the data in the middle node is ");
+            printf("%d \n",ptr->data);
+    }
+}
+
 
 int main(){
     struct node *start = NULL;
@@ -48,7 +74,9 @@ int main(){
     insert_at_begining(&start,30);
     insert_at_begining(&start,40);
     insert_at_begining(&start,50);
+    insert_at_begining(&start,60);
 
     printing_data_last(&start);
+    middle_node_data(&start);
     printing_data_sec_last(&start);
 }
