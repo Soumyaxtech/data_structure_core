@@ -49,13 +49,15 @@ void middle_node_data_two_pointer(struct node **start){
     fast = *start;
     slow = *start;
 
-    while(fast !=NULL && fast->next->next != NULL){
+    while(fast !=NULL){
         fast = fast->next->next;
         slow = slow->next;
-    }
-
-    printf("the data in the middle node using two pointer is ");
+        if(fast->next==NULL || fast->next->next==NULL){
+            printf("the data in the middle node using two pointer is ");
             printf("%d \n",slow->data);
+            break;
+        }
+    }
 
 }
 
